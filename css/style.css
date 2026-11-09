@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600&display=swap');
+
+:root {
+    --dark-green: #2A4B3C;
+    --bg-beige: #F9F6F0;
+    --accent: #D97334;
+    --text-dark: #333333;
+    --placeholder-img: #d2d2d2;
+    --placeholder-sprite: #b5c7b9;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-beige);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Lora', serif;
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+ul, ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+header {
+    background-color: var(--dark-green);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-beige);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+nav a {
+    color: var(--bg-beige);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover { color: var(--accent); }
+
+main {
+    padding: 40px 10vw;
+    min-height: 70vh;
+}
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.content-section {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    margin-bottom: 40px;
+}
+
+/* Оновлений базовий клас для всіх ілюстрацій та відео */
+.illustration {
+    max-width: 100%; /* Картинка ніколи не вилізе за межі блоку */
+    height: auto;    /* Зберігає правильні пропорції, не сплющує */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0 auto;  /* Рівно центрує зображення по горизонталі */
+}
+
+/* Спеціальне правило для картинок всередині текстових блоків (як лілія у Червоній книзі) */
+.content-section .illustration {
+    max-width: 350px; /* Обмежує ширину, щоб картинки не були гігантськими */
+    margin-top: 30px;
+}
+
+/* Якщо потрібно прибрати білий/сірий фон у картинки з анатомією */
+.anatomy-card .illustration,
+img[alt="Схема будови тіла"] {
+    mix-blend-mode: multiply;
+    box-shadow: none;
+}
+
+
+nav a {
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: #F4A259 !important;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .illustration {
+    min-height: 200px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0;
+    flex-grow: 1; /* Робить висоту карток однаковою */
+}
+
+/* Динамічна анімація */
+.sprite-animation {
+    width: 150px;
+    height: 150px;
+    background-color: var(--placeholder-sprite);
+    border: 2px dashed var(--dark-green);
+    border-radius: 8px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    color: var(--dark-green);
+    font-family: monospace;
+}
+
+.sprite-animation::after {
+    content: "Анімація \A (6 кадрів)";
+    white-space: pre;
+}
+
+@keyframes playSprite {
+    from { background-position: 0 0; }
+    to { background-position: -900px 0; }
+}
+/* Плавна анімація для карток */
+.card {
+    transition: all 0.3s ease;
+    border-bottom: 4px solid transparent; /* Прозора лінія за замовчуванням */
+}
+
+/* Помаранчевий акцент при наведенні на картку метелика */
+.card:hover {
+    transform: translateY(-5px); /* Картка трохи підіймається вгору */
+    border-bottom: 4px solid #F4A259; /* З'являється помаранчева лінія */
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.1);
+}
+img {
+    max-width: 100%; /* Картинка ніколи не буде ширшою за свій блок */
+    height: auto;    /* Пропорції не будуть спотворюватися */
+}
+/* Окремий клас для великих схем та ілюстрацій (наприклад, анатомія) */
+.content-section img.large-illustration {
+    max-width: 800px; /* Збільшуємо ліміт ширини */
+    width: 100%;      /* Змушуємо картинку розтягнутися на доступний простір */
+    margin-top: 30px;
+}
